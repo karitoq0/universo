@@ -766,3 +766,4738 @@
 <div id="toast"
      class="toast">
 </div>
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap");
+
+:root {
+  --background: #02040d;
+  --panel: rgba(9, 15, 34, .82);
+  --text: #f5f7ff;
+  --muted: #9da9c7;
+  --accent: #72e7ff;
+  --purple: #a078ff;
+  --pink: #ff78d1;
+  --green: #50e0a2;
+  --yellow: #ffd66b;
+  --red: #ff6877;
+  --border: rgba(145,180,255,.16);
+  --shadow: 0 30px 90px rgba(0,0,0,.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--background);
+  font-family: Inter, sans-serif;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.space-background {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 20%, #111d49, #040713 48%, #010208);
+}
+
+#stars {
+  position: absolute;
+  inset: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  animation: starBlink 3s infinite alternate;
+}
+
+.nebula {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .12;
+}
+
+.nebula-one {
+  left: -200px;
+  top: -200px;
+  background: #7655ff;
+}
+
+.nebula-two {
+  right: -200px;
+  bottom: -200px;
+  background: #00ddff;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, white);
+  transform: rotate(-35deg);
+  opacity: 0;
+}
+
+.shooting-one {
+  top: 20%;
+  left: -10%;
+  animation: shooting 8s infinite;
+}
+
+.shooting-two {
+  top: 50%;
+  left: -10%;
+  animation: shooting 11s 4s infinite;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.hero {
+  min-height: 780px;
+  position: relative;
+}
+
+.navbar {
+  width: min(1250px,92%);
+  margin: auto;
+  padding: 25px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  color: white;
+  text-decoration: none;
+  font-family: Orbitron;
+  font-size: 19px;
+  letter-spacing: 1px;
+}
+
+.brand-icon {
+  color: var(--accent);
+  margin-right: 8px;
+  text-shadow: 0 0 20px var(--accent);
+}
+
+.brand b {
+  color: var(--accent);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  color: white;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  transition: .25s;
+}
+
+.icon-button:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(114,231,255,.12);
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-content {
+  width: min(1000px,90%);
+  margin: 130px auto 0;
+  text-align: center;
+}
+
+.system-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 50px;
+  border: 1px solid rgba(80,224,162,.2);
+  background: rgba(80,224,162,.05);
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 15px var(--green);
+  animation: pulse 1.5s infinite;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  margin: 15px 0;
+  font-family: Orbitron;
+  font-size: clamp(45px,8vw,92px);
+  line-height: 1.03;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--accent);
+  text-shadow:
+    0 0 25px rgba(114,231,255,.25),
+    0 0 60px rgba(160,120,255,.15);
+}
+
+.hero-description {
+  max-width: 700px;
+  margin: 25px auto;
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button,
+.info-button {
+  border-radius: 13px;
+  padding: 14px 21px;
+  font-weight: 800;
+  border: none;
+  transition: .25s;
+}
+
+.primary-button {
+  color: #02050c;
+  background: linear-gradient(135deg,var(--accent),var(--purple));
+  box-shadow: 0 10px 35px rgba(114,231,255,.12);
+}
+
+.secondary-button,
+.info-button {
+  color: white;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border);
+}
+
+.primary-button:hover,
+.secondary-button:hover,
+.info-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(114,231,255,.15);
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+  margin-top: 60px;
+}
+
+.hero-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.hero-stats strong {
+  font-family: Orbitron;
+  font-size: 25px;
+  color: white;
+}
+
+.hero-stats span {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.floating-map-button {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 18px;
+  border-radius: 30px;
+  color: var(--accent);
+  background: rgba(114,231,255,.05);
+  border: 1px solid rgba(114,231,255,.2);
+  transition: .25s;
+}
+
+.floating-map-button:hover {
+  background: rgba(114,231,255,.12);
+  box-shadow: 0 0 30px rgba(114,231,255,.1);
+}
+
+
+/* =========================================
+   SECCIONES
+========================================= */
+
+.explorer-section,
+.calculator-section,
+.mission-log-section {
+  width: min(1250px,92%);
+  margin: auto;
+  padding: 110px 0;
+}
+
+.section-heading {
+  max-width: 780px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+
+.section-heading h2 {
+  font-family: Orbitron;
+  font-size: clamp(30px,5vw,55px);
+  margin: 8px 0 15px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   SELECTOR
+========================================= */
+
+.planet-selector {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 30px;
+}
+
+.planet-select-button {
+  padding: 10px 15px;
+  border-radius: 12px;
+  color: white;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+  transition: .25s;
+}
+
+.planet-select-button:hover,
+.planet-select-button.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(114,231,255,.08);
+  box-shadow: 0 0 25px rgba(114,231,255,.08);
+}
+
+
+/* =========================================
+   CONSOLA
+========================================= */
+
+.planet-console {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.visual-column {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-location {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.planet-location strong {
+  color: var(--accent);
+}
+
+.planet-scene {
+  position: relative;
+  width: 470px;
+  height: 470px;
+  display: grid;
+  place-items: center;
+}
+
+.orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(114,231,255,.12);
+  border-radius: 50%;
+}
+
+.orbit-ring-one {
+  width: 370px;
+  height: 230px;
+  transform: rotate(-20deg);
+}
+
+.orbit-ring-two {
+  width: 280px;
+  height: 410px;
+  transform: rotate(25deg);
+}
+
+.orbit-ring-three {
+  width: 420px;
+  height: 420px;
+  border-style: dashed;
+  animation: orbitRotate 18s linear infinite;
+}
+
+.planet-label {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+}
+
+.planet-label span {
+  display: block;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.planet-label strong {
+  color: var(--accent);
+  font-family: Orbitron;
+  font-size: 12px;
+}
+
+.planet {
+  position: relative;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,#ddd,#777,#222);
+  box-shadow:
+    inset -30px -20px 50px rgba(0,0,0,.55),
+    0 0 80px rgba(255,255,255,.15);
+  animation: planetSpin 18s linear infinite;
+  transition: .5s;
+  cursor: grab;
+}
+
+.planet:active {
+  cursor: grabbing;
+}
+
+.planet-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    linear-gradient(125deg,rgba(255,255,255,.38),transparent 38%);
+}
+
+.planet-atmosphere {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(114,231,255,.15);
+  box-shadow: 0 0 25px rgba(114,231,255,.08);
+}
+
+.planet-ring {
+  position: absolute;
+  width: 330px;
+  height: 85px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) rotate(-18deg);
+  border: 13px solid rgba(230,220,190,.6);
+  border-radius: 50%;
+  display: none;
+}
+
+.planet.has-ring .planet-ring {
+  display: block;
+}
+
+.planet-moon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #bbb;
+  display: none;
+  box-shadow: 0 0 20px rgba(255,255,255,.15);
+}
+
+.planet.has-moon + .planet-moon {
+  display: block;
+  animation: moonOrbit 5s linear infinite;
+}
+
+.planet-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.planet-controls button,
+.visual-actions button {
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 10px 14px;
+  color: white;
+  background: rgba(255,255,255,.04);
+}
+
+.planet-controls button:hover,
+.visual-actions button:hover {
+  border-color: var(--accent);
+}
+
+.control-main {
+  min-width: 170px;
+}
+
+.drag-help {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.visual-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.information-column {
+  padding: 15px;
+}
+
+.planet-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.planet-type {
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.planet-title-row h2 {
+  margin: 5px 0 15px;
+  font-family: Orbitron;
+  font-size: 45px;
+}
+
+.status-badge {
+  height: fit-content;
+  padding: 8px 12px;
+  border-radius: 30px;
+  font-size: 10px;
+  font-weight: 800;
+  background: rgba(255,255,255,.06);
+}
+
+.status-badge.safe {
+  color: var(--green);
+}
+
+.status-badge.medium {
+  color: var(--yellow);
+}
+
+.status-badge.danger {
+  color: var(--red);
+}
+
+.planet-description {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.planet-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+  color: var(--muted);
+  font-size: 10px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.planet-meta b {
+  color: var(--green);
+}
+
+.tabs {
+  display: flex;
+  gap: 3px;
+  margin-top: 20px;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.tab-button {
+  flex-shrink: 0;
+  padding: 12px 13px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+}
+
+.tab-button.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.tab-panel {
+  display: none;
+  padding-top: 20px;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.stat {
+  padding: 15px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+}
+
+.stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.stat strong {
+  display: block;
+  margin-top: 5px;
+}
+
+.fact-box {
+  display: flex;
+  gap: 14px;
+  margin-top: 12px;
+  padding: 17px;
+  border-radius: 15px;
+  background: rgba(114,231,255,.045);
+  border: 1px solid rgba(114,231,255,.13);
+}
+
+.fact-icon {
+  color: var(--accent);
+  font-size: 25px;
+}
+
+.fact-box p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.discovery-box {
+  margin-top: 12px;
+  padding: 15px;
+  border-radius: 14px;
+  background: rgba(160,120,255,.05);
+}
+
+.discovery-box > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.discovery-box strong {
+  color: var(--purple);
+}
+
+.mini-progress,
+.progress-track {
+  height: 7px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255,255,255,.07);
+}
+
+.mini-progress span,
+.progress-track span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg,var(--accent),var(--purple));
+  transition: .6s;
+}
+
+.event-generator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255,120,209,.04);
+  border: 1px solid rgba(255,120,209,.12);
+}
+
+.event-generator span {
+  display: block;
+  color: var(--pink);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.event-generator strong {
+  display: block;
+  margin-top: 5px;
+}
+
+.event-generator button {
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--border);
+}
+
+.event-item,
+.equipment-item {
+  margin-top: 10px;
+  padding: 13px;
+  border-radius: 12px;
+  color: #d9e1f5;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+}
+
+.mission-card {
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.035);
+}
+
+.mission-score {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mission-score span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.mission-score strong {
+  color: var(--accent);
+  font-family: Orbitron;
+  font-size: 28px;
+}
+
+.mission-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.mission-card h3 {
+  font-family: Orbitron;
+  font-size: 13px;
+}
+
+.life-preview {
+  display: flex;
+  gap: 18px;
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(114,231,255,.06),
+    rgba(160,120,255,.06)
+  );
+  border: 1px solid var(--border);
+}
+
+.life-icon {
+  font-size: 40px;
+}
+
+.life-preview span {
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.life-preview strong {
+  display: block;
+  margin: 7px 0;
+  font-family: Orbitron;
+}
+
+.life-preview p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.wide-action {
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px;
+  border-radius: 12px;
+  color: white;
+  background: rgba(114,231,255,.07);
+  border: 1px solid rgba(114,231,255,.2);
+}
+
+
+/* =========================================
+   CALCULADORA
+========================================= */
+
+.calculator-card {
+  max-width: 680px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 25px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.calculator-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  color: var(--accent);
+  font-family: Orbitron;
+  font-size: 10px;
+}
+
+.calculator-card label {
+  display: block;
+  margin-bottom: 18px;
+  color: var(--muted);
+}
+
+.input-wrapper {
+  display: flex;
+  margin-top: 8px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px;
+  color: white;
+  background: rgba(0,0,0,.25);
+  border: 1px solid var(--border);
+  border-radius: 10px 0 0 10px;
+  outline: none;
+}
+
+.input-wrapper input:focus {
+  border-color: var(--accent);
+}
+
+.input-wrapper span {
+  display: grid;
+  place-items: center;
+  padding: 0 15px;
+  background: rgba(255,255,255,.07);
+  border-radius: 0 10px 10px 0;
+}
+
+.calculation-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.calculation-results div {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,.035);
+}
+
+.calculation-results span {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.calculation-results strong {
+  display: block;
+  margin-top: 7px;
+  color: var(--accent);
+  font-family: Orbitron;
+  font-size: 22px;
+}
+
+
+/* =========================================
+   MISIÓN
+========================================= */
+
+.mission-log {
+  display: grid;
+  grid-template-columns: 70px repeat(3,1fr);
+  gap: 15px;
+  align-items: center;
+  padding: 25px;
+  border-radius: 22px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+
+.mission-log-icon {
+  font-size: 40px;
+}
+
+.mission-log span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.mission-log strong {
+  display: block;
+  margin-top: 5px;
+}
+
+.achievement-panel {
+  margin-top: 15px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.025);
+  border: 1px solid var(--border);
+}
+
+.achievement-title {
+  color: var(--yellow);
+  font-family: Orbitron;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.achievement-list {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+}
+
+.achievement {
+  padding: 13px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+  opacity: .35;
+}
+
+.achievement.unlocked {
+  opacity: 1;
+  border-color: rgba(255,214,107,.35);
+  box-shadow: 0 0 20px rgba(255,214,107,.06);
+}
+
+.achievement-icon {
+  font-size: 23px;
+}
+
+.achievement strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+}
+
+.achievement small {
+  color: var(--muted);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  padding: 70px 20px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+footer strong {
+  font-family: Orbitron;
+}
+
+footer p {
+  color: var(--muted);
+}
+
+.footer-code {
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+
+/* =========================================
+   CENTRO DE MANDO
+========================================= */
+
+.command-dock {
+  position: fixed;
+  z-index: 2000;
+  right: 20px;
+  bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 10px;
+
+  border-radius: 20px;
+  background: rgba(4,8,22,.88);
+  border: 1px solid rgba(114,231,255,.2);
+
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.45);
+}
+
+.command-btn {
+  width: 85px;
+  min-height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  border-radius: 14px;
+  color: white;
+  background: rgba(255,255,255,.045);
+  border: 1px solid var(--border);
+
+  transition: .25s;
+}
+
+.command-btn span {
+  font-size: 21px;
+}
+
+.command-btn small {
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.command-btn:hover {
+  transform: translateX(-5px) scale(1.03);
+  border-color: var(--accent);
+  background: rgba(114,231,255,.1);
+  box-shadow: 0 0 25px rgba(114,231,255,.1);
+}
+
+
+/* =========================================
+   MODALES
+========================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 4000;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0,0,0,.78);
+  backdrop-filter: blur(14px);
+}
+
+.modal-overlay.active {
+  display: flex;
+  animation: modalIn .25s ease;
+}
+
+.modal-window {
+  position: relative;
+  width: min(900px,95vw);
+  max-height: 88vh;
+  overflow-y: auto;
+
+  padding: 35px;
+
+  border-radius: 28px;
+  border: 1px solid rgba(114,231,255,.22);
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(160,120,255,.13),
+      transparent 35%
+    ),
+    #080d1e;
+
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.75),
+    0 0 50px rgba(114,231,255,.05);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 50%;
+  color: white;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border);
+
+  transition: .2s;
+}
+
+.modal-close:hover {
+  background: var(--red);
+  transform: rotate(90deg);
+}
+
+.modal-header h2 {
+  font-family: Orbitron;
+  font-size: clamp(25px,5vw,40px);
+  margin: 5px 0 25px;
+}
+
+.modal-content {
+  color: #dfe6f7;
+}
+
+.modal-planets-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+}
+
+.modal-planet-button {
+  min-height: 110px;
+  padding: 15px;
+  text-align: left;
+
+  color: white;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  transition: .25s;
+}
+
+.modal-planet-button:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  background: rgba(114,231,255,.08);
+}
+
+.modal-planet-button strong {
+  display: block;
+  font-family: Orbitron;
+  margin-bottom: 7px;
+}
+
+.modal-planet-button span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.quick-planet {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.quick-box {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid var(--border);
+}
+
+.quick-box h3 {
+  margin-top: 0;
+  color: var(--accent);
+  font-family: Orbitron;
+  font-size: 15px;
+}
+
+.quick-box p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.quick-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.quick-stat span {
+  color: var(--muted);
+}
+
+.quick-stat strong {
+  color: white;
+}
+
+.modal-lab {
+  display: grid;
+  gap: 15px;
+}
+
+.modal-input label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.modal-input input {
+  width: 100%;
+  margin-top: 7px;
+  padding: 13px;
+  color: white;
+  background: rgba(0,0,0,.3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.modal-result {
+  padding: 20px;
+  border-radius: 18px;
+  background: rgba(114,231,255,.05);
+  border: 1px solid rgba(114,231,255,.13);
+  line-height: 1.8;
+}
+
+.modal-result strong {
+  color: var(--accent);
+  font-family: Orbitron;
+  font-size: 25px;
+}
+
+.mission-modal {
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(114,231,255,.04);
+  border: 1px solid var(--border);
+}
+
+.mission-number {
+  font-family: Orbitron;
+  color: var(--accent);
+  font-size: 50px;
+}
+
+.modal-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-mission-item {
+  padding: 15px;
+  border-radius: 13px;
+  background: rgba(255,255,255,.04);
+}
+
+.surprise-card {
+  text-align: center;
+  padding: 20px;
+}
+
+.surprise-icon {
+  font-size: 65px;
+}
+
+.surprise-card h3 {
+  font-family: Orbitron;
+  font-size: 30px;
+}
+
+.surprise-card p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.simulation-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+}
+
+.simulation-card {
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--border);
+}
+
+.simulation-card span {
+  color: var(--accent);
+  font-size: 10px;
+}
+
+.simulation-card strong {
+  display: block;
+  margin: 8px 0;
+  font-family: Orbitron;
+}
+
+.simulation-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.map-screen {
+  position: relative;
+  min-height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle,#12245a,#040916 65%);
+  border: 1px solid rgba(114,231,255,.15);
+}
+
+.map-sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle,#fff5a5,#ff9d2e,#ff4d00);
+  box-shadow: 0 0 50px #ff9d2e;
+}
+
+.map-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border: 1px solid rgba(114,231,255,.13);
+  border-radius: 50%;
+}
+
+.map-planet {
+  position: absolute;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  background: #555;
+  box-shadow: 0 0 15px rgba(255,255,255,.2);
+  transition: .25s;
+}
+
+.map-planet:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 30px var(--accent);
+}
+
+.map-label {
+  position: absolute;
+  transform: translate(-50%,25px);
+  color: var(--muted);
+  font-size: 9px;
+  pointer-events: none;
+}
+
+.toast {
+  position: fixed;
+  z-index: 6000;
+  left: 50%;
+  bottom: 25px;
+  transform: translate(-50%,120px);
+
+  padding: 13px 20px;
+  border-radius: 30px;
+
+  background: #101936;
+  border: 1px solid rgba(114,231,255,.2);
+
+  color: white;
+  font-size: 12px;
+
+  transition: .3s;
+}
+
+.toast.show {
+  transform: translate(-50%,0);
+}
+
+body.paused *,
+body.paused *::before,
+body.paused *::after {
+  animation-play-state: paused !important;
+}
+
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+@keyframes starBlink {
+  from {
+    opacity: .15;
+  }
+
+  to {
+    opacity: .9;
+  }
+}
+
+@keyframes planetSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitRotate {
+  from {
+    transform: rotate(25deg);
+  }
+
+  to {
+    transform: rotate(385deg);
+  }
+}
+
+@keyframes moonOrbit {
+  from {
+    transform: rotate(0deg) translateX(160px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(160px) rotate(-360deg);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: .3;
+  }
+}
+
+@keyframes shooting {
+  0% {
+    left: -15%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  35% {
+    left: 110%;
+    opacity: 0;
+  }
+
+  100% {
+    left: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(.94) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:900px) {
+
+  .planet-console {
+    grid-template-columns: 1fr;
+  }
+
+  .planet-scene {
+    width: 390px;
+    height: 390px;
+  }
+
+  .modal-planets-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .achievement-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media(max-width:650px) {
+
+  .hero-content {
+    margin-top: 80px;
+  }
+
+  .hero-stats {
+    gap: 25px;
+  }
+
+  .hero-stats strong {
+    font-size: 19px;
+  }
+
+  .planet-scene {
+    width: 320px;
+    height: 320px;
+  }
+
+  .planet {
+    width: 170px;
+    height: 170px;
+  }
+
+  .planet-ring {
+    width: 250px;
+  }
+
+  .planet-console {
+    padding: 18px;
+  }
+
+  .mission-log {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .achievement-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quick-planet,
+  .simulation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .command-dock {
+    left: 50%;
+    right: auto;
+    bottom: 10px;
+    transform: translateX(-50%);
+    flex-direction: row;
+  }
+
+  .command-btn {
+    width: 65px;
+    min-height: 57px;
+  }
+
+  .command-btn span {
+    font-size: 17px;
+  }
+
+  .command-btn small {
+    font-size: 7px;
+  }
+
+  .modal-window {
+    padding: 25px 17px;
+  }
+
+  .modal-mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calculation-results {
+    grid-template-columns: 1fr;
+  }
+/* =========================================================
+   MAPA HOLOGRÁFICO + SIMULACIÓN HUMANA
+   ========================================================= */
+
+.holo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(65, 220, 255, .10), transparent 35%),
+    rgba(2, 5, 18, .88);
+  backdrop-filter: blur(12px);
+}
+
+.holo-overlay.active {
+  display: flex;
+  animation: holoAppear .3s ease;
+}
+
+@keyframes holoAppear {
+  from {
+    opacity: 0;
+    transform: scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.holo-window {
+  position: relative;
+  width: min(1150px, 96vw);
+  max-height: 90vh;
+  overflow: hidden;
+  border: 1px solid rgba(121, 231, 255, .35);
+  border-radius: 28px;
+  background:
+    linear-gradient(145deg, rgba(8, 18, 42, .97), rgba(7, 9, 25, .96));
+  box-shadow:
+    0 0 40px rgba(121, 231, 255, .12),
+    0 30px 100px rgba(0,0,0,.7),
+    inset 0 0 50px rgba(121, 231, 255, .035);
+}
+
+.holo-window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(121,231,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(121,231,255,.035) 1px, transparent 1px);
+  background-size: 35px 35px;
+}
+
+.holo-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 26px;
+  border-bottom: 1px solid rgba(121,231,255,.15);
+}
+
+.holo-title {
+  margin: 0;
+  color: #79e7ff;
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(18px, 3vw, 28px);
+  letter-spacing: 2px;
+  text-shadow: 0 0 18px rgba(121,231,255,.7);
+}
+
+.holo-status {
+  margin: 5px 0 0;
+  color: #8290ad;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.holo-close {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 50%;
+  color: white;
+  background: rgba(255,255,255,.06);
+  font-size: 20px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.holo-close:hover {
+  background: rgba(255,107,117,.2);
+  border-color: #ff6b75;
+  transform: rotate(90deg);
+}
+
+/* MAPA */
+
+.holo-map {
+  position: relative;
+  z-index: 1;
+  height: 600px;
+  overflow: hidden;
+  cursor: grab;
+  background:
+    radial-gradient(circle at center, rgba(80,100,255,.08), transparent 40%),
+    #020510;
+}
+
+.holo-map:active {
+  cursor: grabbing;
+}
+
+.holo-grid {
+  position: absolute;
+  inset: -50%;
+  background:
+    linear-gradient(rgba(121,231,255,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(121,231,255,.055) 1px, transparent 1px);
+  background-size: 45px 45px;
+  transform: perspective(700px) rotateX(58deg);
+  opacity: .7;
+}
+
+.holo-scanline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 5px,
+    rgba(121,231,255,.025) 6px
+  );
+}
+
+.holo-map-world {
+  position: absolute;
+  width: 900px;
+  height: 520px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.holo-sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 85px;
+  height: 85px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff7ad, #ffae32 40%, #ff5a1f 75%);
+  box-shadow:
+    0 0 25px #ffb52e,
+    0 0 70px rgba(255,140,30,.65),
+    0 0 140px rgba(255,100,20,.3);
+}
+
+.holo-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(121,231,255,.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.holo-planet {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border: 2px solid rgba(121,231,255,.35);
+  border-radius: 50%;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: .25s;
+  box-shadow: 0 0 18px rgba(121,231,255,.18);
+}
+
+.holo-planet:hover {
+  z-index: 20;
+  transform: scale(1.3);
+  border-color: #79e7ff;
+  box-shadow:
+    0 0 20px #79e7ff,
+    0 0 50px rgba(121,231,255,.4);
+}
+
+.holo-planet span {
+  position: absolute;
+  top: 70px;
+  white-space: nowrap;
+  color: #cbd6ef;
+  font-size: 11px;
+  font-family: Inter, sans-serif;
+  text-shadow: 0 0 8px #000;
+}
+
+.holo-controls {
+  position: absolute;
+  z-index: 10;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.holo-control {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(121,231,255,.25);
+  border-radius: 12px;
+  color: #79e7ff;
+  background: rgba(4,12,30,.85);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.holo-control:hover {
+  background: rgba(121,231,255,.12);
+}
+
+.holo-info {
+  position: absolute;
+  z-index: 10;
+  right: 20px;
+  bottom: 20px;
+  width: 250px;
+  padding: 16px;
+  border: 1px solid rgba(121,231,255,.2);
+  border-radius: 16px;
+  background: rgba(4,10,25,.88);
+  backdrop-filter: blur(10px);
+}
+
+.holo-info strong {
+  color: #79e7ff;
+  font-family: Orbitron, sans-serif;
+}
+
+.holo-info p {
+  margin: 7px 0 0;
+  color: #9da9c5;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* SIMULACIÓN */
+
+.simulation-window {
+  overflow-y: auto;
+}
+
+.simulation-body {
+  position: relative;
+  z-index: 2;
+  padding: 28px;
+}
+
+.simulation-hero {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.sim-planet {
+  width: 210px;
+  height: 210px;
+  margin: auto;
+  border-radius: 50%;
+  box-shadow:
+    0 0 30px rgba(121,231,255,.2),
+    0 0 80px rgba(121,231,255,.08);
+  animation: simFloat 5s ease-in-out infinite;
+}
+
+@keyframes simFloat {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-12px) rotate(8deg); }
+}
+
+.simulation-body h2 {
+  margin: 0 0 8px;
+  color: white;
+  font-family: Orbitron, sans-serif;
+}
+
+.simulation-body .sim-intro {
+  color: #9da9c5;
+  line-height: 1.7;
+}
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.sim-card {
+  padding: 18px;
+  border: 1px solid rgba(121,231,255,.13);
+  border-radius: 16px;
+  background: rgba(255,255,255,.035);
+}
+
+.sim-card .sim-icon {
+  font-size: 24px;
+}
+
+.sim-card span {
+  display: block;
+  margin-top: 8px;
+  color: #8490ad;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.sim-card strong {
+  display: block;
+  margin-top: 5px;
+  color: #79e7ff;
+  font-size: 18px;
+}
+
+.sim-scenario {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid rgba(156,108,255,.25);
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(156,108,255,.09),
+    rgba(121,231,255,.04)
+  );
+}
+
+.sim-scenario h3 {
+  margin: 0 0 10px;
+  color: #c8b9ff;
+}
+
+.sim-scenario p {
+  color: #aeb9d2;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.sim-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.sim-button {
+  border: 1px solid rgba(121,231,255,.3);
+  border-radius: 12px;
+  padding: 11px 16px;
+  color: #79e7ff;
+  background: rgba(121,231,255,.06);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.sim-button:hover {
+  background: rgba(121,231,255,.14);
+}
+
+@media (max-width: 700px) {
+  .holo-map {
+    height: 500px;
+  }
+
+  .holo-map-world {
+    transform: translate(-50%, -50%) scale(.7);
+  }
+
+  .holo-info {
+    width: 180px;
+  }
+
+  .simulation-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .sim-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+}/* =========================================================
+   ATLAS CÓSMICO
+   SISTEMA INTERACTIVO COMPLETO
+========================================================= */
+
+
+/* =========================================================
+   BASE DE DATOS
+========================================================= */
+
+const planets = [
+
+  {
+    id:"mercury",
+    name:"Mercurio",
+    type:"PLANETA ROCOSO",
+    description:"Mercurio es el planeta más cercano al Sol y uno de los mundos más extremos del Sistema Solar.",
+    gradient:"radial-gradient(circle at 30% 30%,#ddd,#777 48%,#222)",
+    glow:"rgba(190,190,190,.4)",
+    gravity:.38,
+    orbitalPeriod:.24,
+    ring:false,
+    moon:false,
+    badge:"Extremo",
+    habitability:"danger",
+    score:5,
+    temperature:"167 °C",
+    year:"88 días",
+    stats:[
+      ["Gravedad","0.38 g"],
+      ["Año","88 días"],
+      ["Temperatura","167 °C"],
+      ["Lunas","0"]
+    ],
+    fact:"Un día solar en Mercurio dura aproximadamente 176 días terrestres.",
+    summary:"Una colonia necesitaría una protección extrema contra la radiación y los cambios de temperatura.",
+    equipment:["Trajes térmicos","Escudos contra radiación","Hábitats presurizados"],
+    events:["Cambios extremos de temperatura","Exposición a radiación solar","Necesidad de refugio permanente"],
+    life:"La vida humana requeriría hábitats completamente protegidos. Las temperaturas y la radiación serían grandes desafíos."
+  },
+
+  {
+    id:"venus",
+    name:"Venus",
+    type:"PLANETA ROCOSO",
+    description:"Venus posee una atmósfera extremadamente densa y temperaturas superficiales muy elevadas.",
+    gradient:"radial-gradient(circle at 30% 30%,#fff1b8,#d18b32 55%,#633b12)",
+    glow:"rgba(255,190,80,.4)",
+    gravity:.90,
+    orbitalPeriod:.62,
+    ring:false,
+    moon:false,
+    badge:"Inviable",
+    habitability:"danger",
+    score:2,
+    temperature:"464 °C",
+    year:"225 días",
+    stats:[
+      ["Gravedad","0.90 g"],
+      ["Año","225 días"],
+      ["Temperatura","464 °C"],
+      ["Lunas","0"]
+    ],
+    fact:"Venus gira en dirección contraria a la mayoría de los planetas.",
+    summary:"La superficie sería extremadamente hostil para una colonia humana.",
+    equipment:["Hábitats blindados","Sistemas de refrigeración","Protección atmosférica"],
+    events:["Temperaturas extremas","Presión atmosférica enorme","Atmósfera corrosiva"],
+    life:"Una colonia tendría que utilizar tecnología muy avanzada para proteger a las personas de la temperatura y la presión."
+  },
+
+  {
+    id:"earth",
+    name:"Tierra",
+    type:"PLANETA ROCOSO",
+    description:"La Tierra es nuestro hogar y el único mundo conocido que posee vida.",
+    gradient:"radial-gradient(circle at 30% 30%,#69d7ff,#2166d1 48%,#12315f)",
+    glow:"rgba(70,190,255,.45)",
+    gravity:1,
+    orbitalPeriod:1,
+    ring:false,
+    moon:true,
+    badge:"Habitable",
+    habitability:"safe",
+    score:100,
+    temperature:"15 °C",
+    year:"365 días",
+    stats:[
+      ["Gravedad","1.00 g"],
+      ["Año","365 días"],
+      ["Temperatura","15 °C"],
+      ["Lunas","1"]
+    ],
+    fact:"Más del 70% de la superficie terrestre está cubierta por agua.",
+    summary:"La Tierra proporciona las condiciones conocidas más favorables para la vida humana.",
+    equipment:["Recursos naturales","Infraestructura","Atmósfera respirable"],
+    events:["Clima cambiante","Tormentas","Ciclos naturales"],
+    life:"La Tierra ofrece actualmente las condiciones más adecuadas conocidas para la vida humana."
+  },
+
+  {
+    id:"mars",
+    name:"Marte",
+    type:"PLANETA ROCOSO",
+    description:"Marte es un mundo frío y árido que constituye uno de los principales objetivos de exploración.",
+    gradient:"radial-gradient(circle at 30% 30%,#ffb07c,#b8492b 50%,#4c1712)",
+    glow:"rgba(255,100,60,.4)",
+    gravity:.38,
+    orbitalPeriod:1.88,
+    ring:false,
+    moon:true,
+    badge:"Desafiante",
+    habitability:"medium",
+    score:45,
+    temperature:"-63 °C",
+    year:"687 días",
+    stats:[
+      ["Gravedad","0.38 g"],
+      ["Año","687 días"],
+      ["Temperatura","-63 °C"],
+      ["Lunas","2"]
+    ],
+    fact:"Marte posee Olympus Mons, uno de los volcanes más grandes conocidos del Sistema Solar.",
+    summary:"Una colonia podría requerir hábitats presurizados, producción de agua y sistemas de protección.",
+    equipment:["Trajes presurizados","Generadores de oxígeno","Refugios subterráneos"],
+    events:["Tormentas de polvo","Bajas temperaturas","Radiación superficial"],
+    life:"Una colonia humana podría necesitar refugios presurizados, producción de oxígeno y sistemas para obtener recursos."
+  },
+
+  {
+    id:"jupiter",
+    name:"Júpiter",
+    type:"GIGANTE GASEOSO",
+    description:"Júpiter es el planeta más grande del Sistema Solar y posee una atmósfera dominada por hidrógeno y helio.",
+    gradient:"linear-gradient(160deg,#eee0c4,#a87950,#e2b58b,#7e533d)",
+    glow:"rgba(220,160,100,.4)",
+    gravity:2.53,
+    orbitalPeriod:11.86,
+    ring:true,
+    moon:true,
+    badge:"Extremo",
+    habitability:"danger",
+    score:3,
+    temperature:"-110 °C",
+    year:"11.86 años",
+    stats:[
+      ["Gravedad","2.53 g"],
+      ["Año","11.86 años"],
+      ["Temperatura","-110 °C"],
+      ["Lunas","95+"]
+    ],
+    fact:"La Gran Mancha Roja es una gigantesca tormenta que ha durado siglos.",
+    summary:"La ausencia de una superficie sólida y las condiciones atmosféricas dificultan una colonia convencional.",
+    equipment:["Vehículos flotantes","Protección atmosférica","Sistemas de estabilización"],
+    events:["Tormentas gigantes","Presiones extremas","Radiación intensa"],
+    life:"Una colonia en Júpiter no tendría una superficie sólida convencional y tendría que imaginarse como una plataforma flotante."
+  },
+
+  {
+    id:"saturn",
+    name:"Saturno",
+    type:"GIGANTE GASEOSO",
+    description:"Saturno es famoso por su espectacular sistema de anillos formado principalmente por hielo y roca.",
+    gradient:"linear-gradient(160deg,#f4dca7,#a87950,#e2b58b,#7e533d)",
+    glow:"rgba(220,190,120,.4)",
+    gravity:1.07,
+    orbitalPeriod:29.45,
+    ring:true,
+    moon:true,
+    badge:"Extremo",
+    habitability:"danger",
+    score:4,
+    temperature:"-140 °C",
+    year:"29.45 años",
+    stats:[
+      ["Gravedad","1.07 g"],
+      ["Año","29.45 años"],
+      ["Temperatura","-140 °C"],
+      ["Lunas","140+"]
+    ],
+    fact:"Los anillos de Saturno están formados principalmente por partículas de hielo y roca.",
+    summary:"Una colonia tendría que utilizar tecnología especializada para permanecer en las capas atmosféricas.",
+    equipment:["Plataformas flotantes","Sistemas de navegación","Protección térmica"],
+    events:["Tormentas atmosféricas","Temperaturas extremas","Presión elevada"],
+    life:"Una hipotética colonia necesitaría estructuras muy avanzadas y sistemas capaces de mantenerse estables en la atmósfera."
+  },
+
+  {
+    id:"uranus",
+    name:"Urano",
+    type:"GIGANTE HELADO",
+    description:"Urano es un gigante helado con una inclinación axial extraordinaria.",
+    gradient:"radial-gradient(circle at 30% 30%,#d9ffff,#6bcbd0 55%,#286b80)",
+    glow:"rgba(100,240,255,.4)",
+    gravity:.89,
+    orbitalPeriod:84,
+    ring:true,
+    moon:true,
+    badge:"Extremo",
+    habitability:"danger",
+    score:5,
+    temperature:"-195 °C",
+    year:"84 años",
+    stats:[
+      ["Gravedad","0.89 g"],
+      ["Año","84 años"],
+      ["Temperatura","-195 °C"],
+      ["Lunas","27"]
+    ],
+    fact:"Urano gira prácticamente de lado debido a su enorme inclinación axial.",
+    summary:"El frío extremo y la atmósfera hacen que una colonia humana sea muy compleja.",
+    equipment:["Hábitats térmicos","Sistemas energéticos","Protección atmosférica"],
+    events:["Frío extremo","Vientos intensos","Oscuridad prolongada"],
+    life:"Las temperaturas extremas harían imprescindible una infraestructura térmica muy avanzada."
+  },
+
+  {
+    id:"neptune",
+    name:"Neptuno",
+    type:"GIGANTE HELADO",
+    description:"Neptuno es un planeta azul extremadamente frío y con algunos de los vientos más rápidos del Sistema Solar.",
+    gradient:"radial-gradient(circle at 30% 30%,#72b9ff,#3154d8 55%,#101d69)",
+    glow:"rgba(70,120,255,.45)",
+    gravity:1.14,
+    orbitalPeriod:164.8,
+    ring:true,
+    moon:true,
+    badge:"Extremo",
+    habitability:"danger",
+    score:3,
+    temperature:"-200 °C",
+    year:"164.8 años",
+    stats:[
+      ["Gravedad","1.14 g"],
+      ["Año","164.8 años"],
+      ["Temperatura","-200 °C"],
+      ["Lunas","14"]
+    ],
+    fact:"Neptuno posee algunos de los vientos más rápidos registrados en el Sistema Solar.",
+    summary:"Una misión humana necesitaría una infraestructura tecnológica extremadamente avanzada.",
+    equipment:["Hábitats presurizados","Protección térmica","Sistemas de navegación"],
+    events:["Vientos extremos","Frío intenso","Tormentas atmosféricas"],
+    life:"Una misión humana tendría que superar temperaturas extremas, fuertes vientos y una enorme distancia desde la Tierra."
+  }
+
+];
+
+
+/* =========================================================
+   ELEMENTOS
+========================================================= */
+
+const $ = id => document.getElementById(id);
+
+const planetSelector = $("planetSelector");
+const planet = $("planet");
+const planetRing = $("planetRing");
+const planetMoon = $("planetMoon");
+
+const modal = $("infoModal");
+const modalTitle = $("modalTitle");
+const modalContent = $("modalContent");
+
+let currentPlanetIndex = 0;
+let visitedPlanets = new Set([0]);
+
+let rotationDegrees = 0;
+let rotationPaused = false;
+let globalPaused = false;
+
+let dragging = false;
+let dragStartX = 0;
+let dragStartRotation = 0;
+
+let soundEnabled = false;
+let audioContext = null;
+let toastTimer;
+
+
+/* =========================================================
+   ESTRELLAS
+========================================================= */
+
+function createSpace(){
+
+  const stars = $("stars");
+
+  stars.innerHTML = "";
+
+  for(let i=0;i<220;i++){
+
+    const star = document.createElement("span");
+
+    star.className = "star";
+
+    star.style.left = Math.random()*100 + "%";
+    star.style.top = Math.random()*100 + "%";
+
+    const size = Math.random()*2+1;
+
+    star.style.width = size+"px";
+    star.style.height = size+"px";
+
+    star.style.animationDelay =
+      Math.random()*3+"s";
+
+    stars.appendChild(star);
+  }
+}
+
+
+/* =========================================================
+   SELECTOR
+========================================================= */
+
+function createSelector(){
+
+  planetSelector.innerHTML = "";
+
+  planets.forEach((p,index)=>{
+
+    const button =
+      document.createElement("button");
+
+    button.className =
+      "planet-select-button";
+
+    button.type = "button";
+
+    button.textContent =
+      p.name;
+
+    button.dataset.index =
+      index;
+
+    button.addEventListener(
+      "click",
+      ()=>{
+        selectPlanet(index);
+      }
+    );
+
+    planetSelector.appendChild(button);
+
+  });
+
+}
+
+
+/* =========================================================
+   SELECCIONAR PLANETA
+========================================================= */
+
+function selectPlanet(index,notify=true){
+
+  const p = planets[index];
+
+  if(!p) return;
+
+  currentPlanetIndex = index;
+
+  visitedPlanets.add(index);
+
+  $("planetName").textContent =
+    p.name;
+
+  $("planetLabel").textContent =
+    p.name.toUpperCase();
+
+  $("planetType").textContent =
+    p.type;
+
+  $("planetDescription").textContent =
+    p.description;
+
+  $("habitabilityBadge").textContent =
+    p.badge;
+
+  $("habitabilityBadge").className =
+    "status-badge "+p.habitability;
+
+  $("calculatorPlanet").textContent =
+    p.name.toUpperCase();
+
+
+  /* PLANETA VISUAL */
+
+  planet.style.background =
+    p.gradient;
+
+  planet.style.boxShadow =
+    `inset -30px -20px 50px rgba(0,0,0,.55),
+     0 0 80px ${p.glow}`;
+
+  planet.className =
+    "planet";
+
+  if(p.ring)
+    planet.classList.add("has-ring");
+
+  if(p.moon)
+    planet.classList.add("has-moon");
+
+
+  /* STATS */
+
+  $("statsGrid").innerHTML =
+    p.stats.map(s=>`
+
+      <div class="stat">
+
+        <span>${s[0]}</span>
+
+        <strong>${s[1]}</strong>
+
+      </div>
+
+    `).join("");
+
+
+  $("funFact").textContent =
+    p.fact;
+
+
+  $("eventsList").innerHTML =
+    p.events.map(event=>`
+
+      <div class="event-item">
+        ⚠️ ${event}
+      </div>
+
+    `).join("");
+
+
+  $("missionScore").textContent =
+    p.score+"%";
+
+  $("missionProgress").style.width =
+    p.score+"%";
+
+  $("missionSummary").textContent =
+    p.summary;
+
+
+  $("equipmentList").innerHTML =
+    p.equipment.map(item=>`
+
+      <div class="equipment-item">
+        🧰 ${item}
+      </div>
+
+    `).join("");
+
+
+  $("lifeText").textContent =
+    p.life;
+
+
+  updateExploration();
+
+  updateMissionLog();
+
+  updateAchievements();
+
+  calculateTransformation();
+
+  if(notify){
+
+    showToast(
+      "🛰️ Destino seleccionado: "+p.name
+    );
+
+    playTone();
+
+  }
+
+}
+
+
+/* =========================================================
+   EXPLORACIÓN
+========================================================= */
+
+function updateExploration(){
+
+  const percentage =
+    Math.round(
+      visitedPlanets.size /
+      planets.length * 100
+    );
+
+  $("explorationPercent").textContent =
+    percentage+"%";
+
+  $("explorationBar").style.width =
+    percentage+"%";
+
+  document
+    .querySelectorAll(".planet-select-button")
+    .forEach(button=>{
+
+      button.classList.toggle(
+        "active",
+        Number(button.dataset.index)
+        === currentPlanetIndex
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   REGISTRO
+========================================================= */
+
+function updateMissionLog(){
+
+  const count =
+    visitedPlanets.size;
+
+  $("visitedCount").textContent =
+    `${count} / ${planets.length}`;
+
+  $("currentMissionPlanet").textContent =
+    planets[currentPlanetIndex].name;
+
+
+  let rank =
+    "Cadete espacial";
+
+  if(count>=3)
+    rank="Navegante orbital";
+
+  if(count>=5)
+    rank="Explorador planetario";
+
+  if(count===8)
+    rank="Comandante del sistema solar";
+
+  $("explorerRank").textContent =
+    rank;
+
+}
+
+
+/* =========================================================
+   LOGROS
+========================================================= */
+
+function updateAchievements(){
+
+  const count =
+    visitedPlanets.size;
+
+  const achievements = [
+
+    {
+      icon:"🌎",
+      title:"Primer contacto",
+      text:"Explora un planeta",
+      unlocked:count>=1
+    },
+
+    {
+      icon:"🪐",
+      title:"Navegante",
+      text:"Explora 3 mundos",
+      unlocked:count>=3
+    },
+
+    {
+      icon:"🚀",
+      title:"Explorador",
+      text:"Explora 5 mundos",
+      unlocked:count>=5
+    },
+
+    {
+      icon:"👑",
+      title:"Comandante",
+      text:"Explora todo el sistema",
+      unlocked:count>=8
+    }
+
+  ];
+
+  $("achievementList").innerHTML =
+    achievements.map(a=>`
+
+      <div class="achievement
+        ${a.unlocked ? "unlocked":""}">
+
+        <div class="achievement-icon">
+          ${a.icon}
+        </div>
+
+        <strong>
+          ${a.title}
+        </strong>
+
+        <small>
+          ${a.text}
+        </small>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+document
+.querySelectorAll(".tab-button")
+.forEach(button=>{
+
+  button.addEventListener(
+    "click",
+    ()=>{
+
+      document
+      .querySelectorAll(".tab-button")
+      .forEach(b=>
+        b.classList.remove("active")
+      );
+
+      document
+      .querySelectorAll(".tab-panel")
+      .forEach(p=>
+        p.classList.remove("active")
+      );
+
+      button.classList.add("active");
+
+      const target =
+        $(button.dataset.tab);
+
+      if(target)
+        target.classList.add("active");
+
+    }
+  );
+
+});
+
+
+/* =========================================================
+   ROTACIÓN
+========================================================= */
+
+$("toggleRotation")
+.addEventListener(
+  "click",
+  ()=>{
+
+    rotationPaused =
+      !rotationPaused;
+
+    planet.classList.toggle(
+      "paused",
+      rotationPaused
+    );
+
+    $("toggleRotation").textContent =
+      rotationPaused
+      ? "▶ REANUDAR"
+      : "⏸ PAUSAR ROTACIÓN";
+
+  }
+);
+
+
+$("rotateLeft")
+.addEventListener(
+  "click",
+  ()=>{
+
+    rotationDegrees -= 25;
+
+    planet.style.transform =
+      `rotate(${rotationDegrees}deg)`;
+
+  }
+);
+
+
+$("rotateRight")
+.addEventListener(
+  "click",
+  ()=>{
+
+    rotationDegrees += 25;
+
+    planet.style.transform =
+      `rotate(${rotationDegrees}deg)`;
+
+  }
+);
+
+
+/* =========================================================
+   ARRASTRAR
+========================================================= */
+
+planet.addEventListener(
+  "pointerdown",
+  e=>{
+
+    dragging=true;
+
+    dragStartX=e.clientX;
+
+    dragStartRotation=
+      rotationDegrees;
+
+    planet.setPointerCapture(
+      e.pointerId
+    );
+
+  }
+);
+
+planet.addEventListener(
+  "pointermove",
+  e=>{
+
+    if(!dragging) return;
+
+    const diff =
+      e.clientX-dragStartX;
+
+    rotationDegrees =
+      dragStartRotation+diff;
+
+    planet.style.transform =
+      `rotate(${rotationDegrees}deg)`;
+
+  }
+);
+
+planet.addEventListener(
+  "pointerup",
+  ()=>{
+    dragging=false;
+  }
+);
+
+
+/* =========================================================
+   CALCULADORA
+========================================================= */
+
+function calculateTransformation(){
+
+  const weight =
+    Number($("earthWeight").value);
+
+  const age =
+    Number($("earthAge").value);
+
+  const p =
+    planets[currentPlanetIndex];
+
+  if(!weight || !age) return;
+
+  const newWeight =
+    weight*p.gravity;
+
+  const newAge =
+    age/p.orbitalPeriod;
+
+  $("weightResult").textContent =
+    newWeight.toFixed(1)+" kg";
+
+  $("ageResult").textContent =
+    newAge.toFixed(1)+" años";
+
+}
+
+$("calculateButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    calculateTransformation();
+
+    showToast(
+      "🧪 Simulación completada"
+    );
+
+    playTone();
+
+  }
+);
+
+
+/* =========================================================
+   EVENTO ALEATORIO
+========================================================= */
+
+function generateEvent(){
+
+  const p =
+    planets[currentPlanetIndex];
+
+  const event =
+    p.events[
+      Math.floor(
+        Math.random()*p.events.length
+      )
+    ];
+
+  $("eventTitle").textContent =
+    event;
+
+  showToast(
+    "⚡ Evento detectado"
+  );
+
+  playTone();
+
+}
+
+
+/* =========================================================
+   MODALES
+========================================================= */
+
+function openModal(title,content){
+
+  modalTitle.textContent =
+    title;
+
+  modalContent.innerHTML =
+    content;
+
+  modal.classList.add("active");
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+function closeModal(){
+
+  modal.classList.remove("active");
+
+  document.body.style.overflow =
+    "";
+
+}
+
+$("closeModal")
+.addEventListener(
+  "click",
+  closeModal
+);
+
+modal.addEventListener(
+  "click",
+  e=>{
+
+    if(e.target===modal)
+      closeModal();
+
+  }
+);
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+    if(e.key==="Escape")
+      closeModal();
+
+  }
+);
+
+
+/* =========================================================
+   PLANETAS MODAL
+========================================================= */
+
+function openPlanetsModal(){
+
+  const html = `
+
+    <p>
+      Selecciona un planeta para transportarte
+      directamente a su estación de investigación.
+    </p>
+
+    <div class="modal-planets-grid">
+
+      ${planets.map((p,i)=>`
+
+        <button
+          type="button"
+          class="modal-planet-button"
+          data-planet="${i}">
+
+          <strong>
+            ${p.name}
+          </strong>
+
+          <span>
+            ${p.type}
+          </span>
+
+        </button>
+
+      `).join("")}
+
+    </div>
+
+  `;
+
+  openModal(
+    "🪐 MAPA DE DESTINOS",
+    html
+  );
+
+
+  document
+  .querySelectorAll("[data-planet]")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+
+        const index =
+          Number(
+            button.dataset.planet
+          );
+
+        selectPlanet(index);
+
+        closeModal();
+
+        setTimeout(
+          showPlanetInfo,
+          150
+        );
+
+      }
+    );
+
+  });
+
+}
+
+
+/* =========================================================
+   INFORMACIÓN COMPLETA
+========================================================= */
+
+function showPlanetInfo(){
+
+  const p =
+    planets[currentPlanetIndex];
+
+  const html = `
+
+    <div class="quick-planet">
+
+      <div class="quick-box">
+
+        <h3>
+          📡 DESCRIPCIÓN
+        </h3>
+
+        <p>
+          ${p.description}
+        </p>
+
+        <p>
+          <b>✦ Dato curioso</b><br>
+          ${p.fact}
+        </p>
+
+      </div>
+
+
+      <div class="quick-box">
+
+        <h3>
+          📊 DATOS CIENTÍFICOS
+        </h3>
+
+        ${p.stats.map(s=>`
+
+          <div class="quick-stat">
+
+            <span>
+              ${s[0]}
+            </span>
+
+            <strong>
+              ${s[1]}
+            </strong>
+
+          </div>
+
+        `).join("")}
+
+      </div>
+
+
+      <div class="quick-box">
+
+        <h3>
+          ⚠️ EVENTOS
+        </h3>
+
+        ${p.events.map(e=>`
+
+          <div class="event-item">
+            ⚠️ ${e}
+          </div>
+
+        `).join("")}
+
+      </div>
+
+
+      <div class="quick-box">
+
+        <h3>
+          🚀 COLONIA HUMANA
+        </h3>
+
+        <p>
+          ${p.summary}
+        </p>
+
+        <p>
+          Viabilidad:
+          <strong>
+            ${p.score}%
+          </strong>
+        </p>
+
+        ${p.equipment.map(e=>`
+
+          <div class="equipment-item">
+            🧰 ${e}
+          </div>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+  `;
+
+  openModal(
+    "📖 "+p.name,
+    html
+  );
+
+}
+
+
+/* =========================================================
+   SIMULACIÓN HUMANA
+========================================================= */
+
+function openLifeSimulation(){
+
+  const p =
+    planets[currentPlanetIndex];
+
+  let shelter;
+  let mobility;
+  let resources;
+
+  if(p.score>=80){
+
+    shelter="Hábitats abiertos y estructuras convencionales";
+    mobility="Vehículos normales";
+    resources="Disponibilidad elevada";
+
+  }else if(p.score>=30){
+
+    shelter="Hábitats presurizados y protegidos";
+    mobility="Vehículos especializados";
+    resources="Recursos limitados";
+
+  }else{
+
+    shelter="Refugios altamente especializados";
+    mobility="Sistemas robóticos y vehículos avanzados";
+    resources="Recursos extremadamente limitados";
+
+  }
+
+
+  const html = `
+
+    <div class="simulation-grid">
+
+      <div class="simulation-card">
+
+        <span>🏠 HÁBITAT</span>
+
+        <strong>
+          ${shelter}
+        </strong>
+
+        <p>
+          Una hipotética colonia tendría que adaptar
+          sus estructuras a las condiciones del planeta.
+        </p>
+
+      </div>
+
+
+      <div class="simulation-card">
+
+        <span>🚙 MOVILIDAD</span>
+
+        <strong>
+          ${mobility}
+        </strong>
+
+        <p>
+          El transporte dependería del terreno,
+          la atmósfera y las condiciones ambientales.
+        </p>
+
+      </div>
+
+
+      <div class="simulation-card">
+
+        <span>💧 RECURSOS</span>
+
+        <strong>
+          ${resources}
+        </strong>
+
+        <p>
+          El acceso a agua, energía y materiales
+          determinaría la duración de una colonia.
+        </p>
+
+      </div>
+
+
+      <div class="simulation-card">
+
+        <span>🌡️ TEMPERATURA</span>
+
+        <strong>
+          ${p.temperature}
+        </strong>
+
+        <p>
+          La temperatura sería uno de los factores
+          fundamentales para diseñar los hábitats.
+        </p>
+
+      </div>
+
+
+      <div class="simulation-card">
+
+        <span>🌍 GRAVEDAD</span>
+
+        <strong>
+          ${p.gravity} g
+        </strong>
+
+        <p>
+          La gravedad afectaría el movimiento,
+          el transporte y las actividades cotidianas.
+        </p>
+
+      </div>
+
+
+      <div class="simulation-card">
+
+        <span>🧑‍🚀 RESULTADO</span>
+
+        <strong>
+          ${p.score}% VIABILIDAD
+        </strong>
+
+        <p>
+          ${p.life}
+        </p>
+
+      </div>
+
+    </div>
+
+  `;
+
+  openModal(
+    "🧑‍🚀 SIMULACIÓN DE COLONIA // "+p.name,
+    html
+  );
+
+}
+
+
+/* =========================================================
+   LABORATORIO MODAL
+========================================================= */
+
+function openLabModal(){
+
+  const p =
+    planets[currentPlanetIndex];
+
+  const html = `
+
+    <div class="modal-lab">
+
+      <p>
+        Estación gravitacional conectada a:
+        <strong>${p.name}</strong>
+      </p>
+
+
+      <div class="modal-input">
+
+        <label>
+          Peso terrestre
+        </label>
+
+        <input
+          id="modalWeight"
+          type="number"
+          value="70"
+          min="1"
+        >
+
+      </div>
+
+
+      <div class="modal-input">
+
+        <label>
+          Edad terrestre
+        </label>
+
+        <input
+          id="modalAge"
+          type="number"
+          value="20"
+          min="1"
+        >
+
+      </div>
+
+
+      <button
+        id="modalCalculate"
+        class="primary-button"
+        type="button">
+
+        🧪 EJECUTAR SIMULACIÓN
+
+      </button>
+
+
+      <div
+        id="modalLabResult"
+        class="modal-result">
+
+        Esperando datos...
+
+      </div>
+
+    </div>
+
+  `;
+
+  openModal(
+    "🔬 LABORATORIO GRAVITACIONAL",
+    html
+  );
+
+
+  $("modalCalculate")
+  .addEventListener(
+    "click",
+    ()=>{
+
+      const weight =
+        Number($("modalWeight").value);
+
+      const age =
+        Number($("modalAge").value);
+
+      const resultWeight =
+        weight*p.gravity;
+
+      const resultAge =
+        age/p.orbitalPeriod;
+
+      $("modalLabResult").innerHTML = `
+
+        Peso en ${p.name}:
+
+        <strong>
+          ${resultWeight.toFixed(1)} kg
+        </strong>
+
+        <br><br>
+
+        Edad planetaria:
+
+        <strong>
+          ${resultAge.toFixed(1)} años
+        </strong>
+
+      `;
+
+      playTone();
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   MISIÓN MODAL
+========================================================= */
+
+function openMissionModal(){
+
+  const count =
+    visitedPlanets.size;
+
+  const html = `
+
+    <div class="mission-modal">
+
+      <p>
+        ESTADO DE LA EXPEDICIÓN
+      </p>
+
+      <div class="mission-number">
+        ${count}/8
+      </div>
+
+      <p>
+        mundos explorados
+      </p>
+
+      <h3>
+        🏅 ${$("explorerRank").textContent}
+      </h3>
+
+
+      <div class="modal-mission-grid">
+
+        <div class="modal-mission-item">
+          🌎 Destino actual<br>
+          <strong>
+            ${planets[currentPlanetIndex].name}
+          </strong>
+        </div>
+
+        <div class="modal-mission-item">
+          📊 Viabilidad<br>
+          <strong>
+            ${planets[currentPlanetIndex].score}%
+          </strong>
+        </div>
+
+        <div class="modal-mission-item">
+          🧭 Exploración<br>
+          <strong>
+            ${Math.round(count/8*100)}%
+          </strong>
+        </div>
+
+        <div class="modal-mission-item">
+          🚀 Estado<br>
+          <strong>
+            EXPEDICIÓN ACTIVA
+          </strong>
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+
+  openModal(
+    "🚀 CENTRO DE MISIÓN",
+    html
+  );
+
+}
+
+
+/* =========================================================
+   SORPRESA
+========================================================= */
+
+function surprisePlanet(){
+
+  const index =
+    Math.floor(
+      Math.random()*planets.length
+    );
+
+  selectPlanet(index,false);
+
+  const p =
+    planets[index];
+
+  const event =
+    p.events[
+      Math.floor(
+        Math.random()*p.events.length
+      )
+    ];
+
+  const icons=[
+    "🌌",
+    "☄️",
+    "⚡",
+    "🛰️",
+    "🔭",
+    "👽"
+  ];
+
+  const icon =
+    icons[
+      Math.floor(
+        Math.random()*icons.length
+      )
+    ];
+
+
+  openModal(
+
+    "🎲 EVENTO CÓSMICO",
+
+    `
+
+      <div class="surprise-card">
+
+        <div class="surprise-icon">
+          ${icon}
+        </div>
+
+        <p>
+          NUEVO DESTINO DETECTADO
+        </p>
+
+        <h3>
+          ${p.name}
+        </h3>
+
+        <p>
+          El sistema ha detectado
+          una situación hipotética:
+        </p>
+
+        <div class="event-item">
+          ⚠️ ${event}
+        </div>
+
+        <p>
+          El planeta ha sido añadido
+          a tu registro de exploración.
+        </p>
+
+      </div>
+
+    `
+
+  );
+
+  updateMissionLog();
+  updateAchievements();
+
+  playTone();
+
+}
+
+
+/* =========================================================
+   MAPA HOLOGRÁFICO
+========================================================= */
+
+function openMap(){
+
+  const positions=[
+    [50,18],
+    [50,27],
+    [50,37],
+    [50,47],
+    [50,59],
+    [50,71],
+    [50,82],
+    [50,93]
+  ];
+
+  const html = `
+
+    <div class="map-screen">
+
+      <div class="map-sun"></div>
+
+      ${planets.map((p,i)=>{
+
+        const y =
+          positions[i][1];
+
+        const angle =
+          i%2===0 ? -1 : 1;
+
+        const x =
+          50 + angle*(12+i*4);
+
+        return `
+
+          <div
+            class="map-orbit"
+            style="
+              width:${120+i*35}px;
+              height:${120+i*35}px;
+            ">
+          </div>
+
+
+          <button
+            class="map-planet"
+            data-map-planet="${i}"
+            style="
+              left:${x}%;
+              top:${y}%;
+              width:${12+i*2}px;
+              height:${12+i*2}px;
+            "
+            title="${p.name}">
+          </button>
+
+          <span
+            class="map-label"
+            style="
+              left:${x}%;
+              top:${y}%;
+            ">
+            ${p.name}
+          </span>
+
+        `;
+
+      }).join("")}
+
+    </div>
+
+  `;
+
+  openModal(
+    "🗺️ MAPA HOLOGRÁFICO",
+    html
+  );
+
+
+  document
+  .querySelectorAll("[data-map-planet]")
+  .forEach(button=>{
+
+    button.addEventListener(
+      "click",
+      ()=>{
+
+        const index =
+          Number(
+            button.dataset.mapPlanet
+          );
+
+        selectPlanet(index);
+
+        closeModal();
+
+        setTimeout(
+          showPlanetInfo,
+          150
+        );
+
+      }
+    );
+
+  });
+
+}
+
+
+/* =========================================================
+   CENTRO DE MANDO
+========================================================= */
+
+$("openPlanetsButton")
+.addEventListener(
+  "click",
+  openPlanetsModal
+);
+
+
+$("openLabButton")
+.addEventListener(
+  "click",
+  openLabModal
+);
+
+
+$("openMissionButton")
+.addEventListener(
+  "click",
+  openMissionModal
+);
+
+
+$("surpriseButton")
+.addEventListener(
+  "click",
+  surprisePlanet
+);
+
+
+$("openMapButton")
+.addEventListener(
+  "click",
+  openMap
+);
+
+
+$("openPlanetInfoButton")
+.addEventListener(
+  "click",
+  showPlanetInfo
+);
+
+
+$("simulateLifeButton")
+.addEventListener(
+  "click",
+  openLifeSimulation
+);
+
+
+$("openLifeButton")
+.addEventListener(
+  "click",
+  openLifeSimulation
+);
+
+
+$("generateEventButton")
+.addEventListener(
+  "click",
+  generateEvent
+);
+
+
+$("startMissionButton")
+.addEventListener(
+  "click",
+  openPlanetsModal
+);
+
+
+$("randomPlanetButton")
+.addEventListener(
+  "click",
+  surprisePlanet
+);
+
+
+/* =========================================================
+   PAUSA GLOBAL
+========================================================= */
+
+$("pauseButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    globalPaused =
+      !globalPaused;
+
+    document.body.classList.toggle(
+      "paused",
+      globalPaused
+    );
+
+    $("pauseButton").textContent =
+      globalPaused ? "▶" : "⏸";
+
+    showToast(
+      globalPaused
+      ? "⏸ Sistema pausado"
+      : "▶ Sistema reactivado"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   SONIDO
+========================================================= */
+
+function playTone(){
+
+  if(!soundEnabled)
+    return;
+
+  try{
+
+    if(!audioContext){
+
+      audioContext =
+        new(
+          window.AudioContext ||
+          window.webkitAudioContext
+        )();
+
+    }
+
+    const oscillator =
+      audioContext.createOscillator();
+
+    const gain =
+      audioContext.createGain();
+
+    oscillator.type="sine";
+
+    oscillator.frequency.value=520;
+
+    gain.gain.setValueAtTime(
+      .05,
+      audioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      .001,
+      audioContext.currentTime+.16
+    );
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+      audioContext.currentTime+.16
+    );
+
+  }catch(error){
+
+    console.log(
+      "Audio no disponible"
+    );
+
+  }
+
+}
+
+
+$("soundButton")
+.addEventListener(
+  "click",
+  ()=>{
+
+    soundEnabled =
+      !soundEnabled;
+
+    $("soundButton").textContent =
+      soundEnabled ? "🔊":"🔇";
+
+    if(soundEnabled)
+      playTone();
+
+    showToast(
+      soundEnabled
+      ? "🔊 Sonido activado"
+      : "🔇 Sonido desactivado"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   PANTALLA COMPLETA
+========================================================= */
+
+$("fullscreenButton")
+.addEventListener(
+  "click",
+  async()=>{
+
+    try{
+
+      if(!document.fullscreenElement){
+
+        await document.documentElement
+          .requestFullscreen();
+
+      }else{
+
+        await document.exitFullscreen();
+
+      }
+
+    }catch(error){
+
+      showToast(
+        "Pantalla completa no disponible"
+      );
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+function showToast(message){
+
+  const toast =
+    $("toast");
+
+  toast.textContent =
+    message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer =
+    setTimeout(
+      ()=>{
+        toast.classList.remove("show");
+      },
+      2300
+    );
+
+}
+
+
+/* =========================================================
+   INICIALIZACIÓN
+========================================================= */
+
+createSpace();
+
+createSelector();
+
+selectPlanet(0,false);
+
+calculateTransformation();
+
+updateAchievements();
+
+console.log(
+  "🚀 ATLAS CÓSMICO // SISTEMA OPERATIVO"
+);/* =========================================================
+   CONEXIÓN FUNCIONAL:
+   MAPA HOLOGRÁFICO + SIMULACIÓN HUMANA
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  document.addEventListener("DOMContentLoaded", iniciarFuncionesExtra);
+
+  function iniciarFuncionesExtra() {
+
+    /* -----------------------------------------------------
+       DATOS DE RESPALDO
+       Si tu código anterior ya tiene "planets", se utilizará
+       automáticamente.
+       ----------------------------------------------------- */
+
+    const datosPlanetas = [
+      {
+        id: "mercury",
+        name: "Mercurio",
+        emoji: "☿",
+        gradient: "radial-gradient(circle at 30% 30%, #d8d8d8, #777 55%, #292929)",
+        gravity: 0.38,
+        temperature: "≈ 167 °C",
+        atmosphere: "Extremadamente tenue",
+        danger: "Radiación y temperaturas extremas"
+      },
+      {
+        id: "venus",
+        name: "Venus",
+        emoji: "♀",
+        gradient: "radial-gradient(circle at 35% 30%, #fff0a6, #d49b3e 55%, #704017)",
+        gravity: 0.90,
+        temperature: "≈ 464 °C",
+        atmosphere: "CO₂ dominante",
+        danger: "Calor y presión extrema"
+      },
+      {
+        id: "earth",
+        name: "Tierra",
+        emoji: "🌎",
+        gradient: "radial-gradient(circle at 35% 30%, #7cecff, #2174d8 45%, #07365d)",
+        gravity: 1,
+        temperature: "≈ 15 °C",
+        atmosphere: "N₂ + O₂",
+        danger: "Condiciones habitables"
+      },
+      {
+        id: "mars",
+        name: "Marte",
+        emoji: "♂",
+        gradient: "radial-gradient(circle at 30% 30%, #ffb078, #bd4d2f 50%, #542018)",
+        gravity: 0.38,
+        temperature: "≈ -63 °C",
+        atmosphere: "CO₂ muy tenue",
+        danger: "Frío y radiación"
+      },
+      {
+        id: "jupiter",
+        name: "Júpiter",
+        emoji: "♃",
+        gradient: "linear-gradient(160deg,#d9c19d,#a97856,#f0d8aa,#91604b)",
+        gravity: 2.53,
+        temperature: "≈ -110 °C",
+        atmosphere: "H₂ + He",
+        danger: "Presión y tormentas extremas"
+      },
+      {
+        id: "saturn",
+        name: "Saturno",
+        emoji: "♄",
+        gradient: "linear-gradient(160deg,#f3dfad,#c8a96d,#8c704d)",
+        gravity: 1.07,
+        temperature: "≈ -140 °C",
+        atmosphere: "H₂ + He",
+        danger: "Frío, presión y radiación"
+      },
+      {
+        id: "uranus",
+        name: "Urano",
+        emoji: "♅",
+        gradient: "radial-gradient(circle at 35% 30%, #bfffff, #69c7cf 55%, #357a88)",
+        gravity: 0.89,
+        temperature: "≈ -195 °C",
+        atmosphere: "H₂ + He + CH₄",
+        danger: "Frío extremo"
+      },
+      {
+        id: "neptune",
+        name: "Neptuno",
+        emoji: "♆",
+        gradient: "radial-gradient(circle at 35% 30%, #83b9ff, #315ac5 55%, #10245e)",
+        gravity: 1.14,
+        temperature: "≈ -200 °C",
+        atmosphere: "H₂ + He + CH₄",
+        danger: "Vientos extremos"
+      }
+    ];
+
+    /* -----------------------------------------------------
+       BUSCAR PLANETA ACTUAL DEL CÓDIGO ANTERIOR
+       ----------------------------------------------------- */
+
+    function obtenerPlanetaActual() {
+
+      try {
+        if (
+          typeof currentPlanetIndex !== "undefined" &&
+          typeof planets !== "undefined" &&
+          planets[currentPlanetIndex]
+        ) {
+          const original = planets[currentPlanetIndex];
+
+          const respaldo =
+            datosPlanetas.find(p => p.id === original.id) ||
+            datosPlanetas[currentPlanetIndex];
+
+          return {
+            ...respaldo,
+            ...original,
+            gravity:
+              Number(original.gravity) ||
+              respaldo.gravity
+          };
+        }
+      } catch (error) {
+        console.log("Usando datos de respaldo.");
+      }
+
+      return datosPlanetas[0];
+    }
+
+    /* -----------------------------------------------------
+       CREAR VENTANA
+       ----------------------------------------------------- */
+
+    const overlay = document.createElement("div");
+    overlay.className = "holo-overlay";
+    overlay.id = "cosmicExtraOverlay";
+
+    document.body.appendChild(overlay);
+
+    function cerrarVentana() {
+      overlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function abrirVentana(contenido) {
+      overlay.innerHTML = contenido;
+      overlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    overlay.addEventListener("click", function (event) {
+      if (
+        event.target === overlay ||
+        event.target.closest("[data-close-cosmic]")
+      ) {
+        cerrarVentana();
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        cerrarVentana();
+      }
+    });
+
+    /* =====================================================
+       MAPA HOLOGRÁFICO
+       ===================================================== */
+
+    function abrirMapaHolografico() {
+
+      const posiciones = [
+        { x: 50, y: 50, orbit: 120 },
+        { x: 50, y: 50, orbit: 170 },
+        { x: 50, y: 50, orbit: 225 },
+        { x: 50, y: 50, orbit: 285 },
+        { x: 50, y: 50, orbit: 350 },
+        { x: 50, y: 50, orbit: 420 },
+        { x: 50, y: 50, orbit: 490 },
+        { x: 50, y: 50, orbit: 555 }
+      ];
+
+      const planetButtons = datosPlanetas.map((p, index) => {
+
+        const angle = index * 45 - 90;
+        const radius = posiciones[index].orbit;
+
+        const x =
+          50 +
+          Math.cos(angle * Math.PI / 180) *
+          (radius / 9);
+
+        const y =
+          50 +
+          Math.sin(angle * Math.PI / 180) *
+          (radius / 6);
+
+        return `
+          <button
+            type="button"
+            class="holo-planet"
+            data-holo-planet="${index}"
+            style="
+              left:${x}%;
+              top:${y}%;
+              background:${p.gradient};
+            "
+            title="Explorar ${p.name}"
+          >
+            ${p.emoji}
+            <span>${p.name}</span>
+          </button>
+        `;
+      }).join("");
+
+      const orbitHTML = posiciones.map(p => `
+        <div
+          class="holo-orbit"
+          style="
+            width:${p.orbit}px;
+            height:${p.orbit}px;
+          "
+        ></div>
+      `).join("");
+
+      abrirVentana(`
+        <div class="holo-window">
+
+          <div class="holo-header">
+            <div>
+              <h2 class="holo-title">
+                ◈ MAPA HOLOGRÁFICO
+              </h2>
+              <p class="holo-status">
+                SISTEMA SOLAR · NAVEGACIÓN INTERACTIVA · SISTEMA ACTIVO
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="holo-close"
+              data-close-cosmic
+            >✕</button>
+          </div>
+
+          <div
+            class="holo-map"
+            id="holographicMap"
+          >
+
+            <div class="holo-grid"></div>
+            <div class="holo-scanline"></div>
+
+            <div
+              class="holo-map-world"
+              id="holoWorld"
+            >
+
+              ${orbitHTML}
+
+              <div class="holo-sun">
+                ☀
+              </div>
+
+              ${planetButtons}
+
+            </div>
+
+            <div class="holo-controls">
+
+              <button
+                type="button"
+                class="holo-control"
+                data-holo-zoom="in"
+              >+</button>
+
+              <button
+                type="button"
+                class="holo-control"
+                data-holo-zoom="reset"
+              >◎</button>
+
+              <button
+                type="button"
+                class="holo-control"
+                data-holo-zoom="out"
+              >−</button>
+
+            </div>
+
+            <div class="holo-info">
+              <strong>RADAR PLANETARIO</strong>
+              <p>
+                Selecciona cualquier planeta para abrir
+                inmediatamente su información y simulación.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      `);
+
+      conectarMapa();
+    }
+
+    function conectarMapa() {
+
+      const world = document.getElementById("holoWorld");
+      const map = document.getElementById("holographicMap");
+
+      if (!world || !map) return;
+
+      let zoom = 1;
+      let dragging = false;
+      let startX = 0;
+      let startY = 0;
+      let offsetX = 0;
+      let offsetY = 0;
+
+      function actualizarMapa() {
+
+        world.style.transform =
+          `translate(calc(-50% + ${offsetX}px), calc(-50% + ${offsetY}px)) scale(${zoom})`;
+      }
+
+      document
+        .querySelectorAll("[data-holo-zoom]")
+        .forEach(button => {
+
+          button.addEventListener("click", function () {
+
+            const action = this.dataset.holoZoom;
+
+            if (action === "in") {
+              zoom = Math.min(1.8, zoom + 0.15);
+            }
+
+            if (action === "out") {
+              zoom = Math.max(.55, zoom - 0.15);
+            }
+
+            if (action === "reset") {
+              zoom = 1;
+              offsetX = 0;
+              offsetY = 0;
+            }
+
+            actualizarMapa();
+          });
+        });
+
+      map.addEventListener("pointerdown", function (event) {
+
+        if (event.target.closest(".holo-planet")) return;
+
+        dragging = true;
+        startX = event.clientX;
+        startY = event.clientY;
+
+        map.setPointerCapture(event.pointerId);
+      });
+
+      map.addEventListener("pointermove", function (event) {
+
+        if (!dragging) return;
+
+        offsetX += event.clientX - startX;
+        offsetY += event.clientY - startY;
+
+        startX = event.clientX;
+        startY = event.clientY;
+
+        actualizarMapa();
+      });
+
+      map.addEventListener("pointerup", function () {
+        dragging = false;
+      });
+
+      document
+        .querySelectorAll("[data-holo-planet]")
+        .forEach(button => {
+
+          button.addEventListener("click", function () {
+
+            const index = Number(this.dataset.holoPlanet);
+
+            seleccionarDesdeMapa(index);
+          });
+        });
+    }
+
+    function seleccionarDesdeMapa(index) {
+
+      /* Conecta con el selector original */
+      try {
+
+        if (typeof selectPlanet === "function") {
+          selectPlanet(index, true);
+        }
+
+      } catch (error) {
+        console.log("No fue posible conectar selectPlanet.");
+      }
+
+      cerrarVentana();
+
+      setTimeout(function () {
+        abrirSimulacion(index);
+      }, 250);
+    }
+
+    /* =====================================================
+       SIMULACIÓN HUMANA
+       ===================================================== */
+
+    function abrirSimulacion(index) {
+
+      const planeta =
+        datosPlanetas[index] ||
+        obtenerPlanetaActual();
+
+      let planetaOriginal = null;
+
+      try {
+
+        if (
+          typeof planets !== "undefined" &&
+          planets[index]
+        ) {
+          planetaOriginal = planets[index];
+        }
+
+      } catch (error) {}
+
+      const descripcion =
+        planetaOriginal?.description ||
+        `Una colonia humana en ${planeta.name} necesitaría sistemas especializados para mantener condiciones seguras.`;
+
+      const score =
+        planetaOriginal?.score ??
+        calcularViabilidad(planeta);
+
+      const simulacion =
+        crearEscenario(planeta);
+
+      abrirVentana(`
+
+        <div class="holo-window simulation-window">
+
+          <div class="holo-header">
+
+            <div>
+              <h2 class="holo-title">
+                🧑‍🚀 SIMULACIÓN HUMANA
+              </h2>
+
+              <p class="holo-status">
+                PROYECCIÓN HIPOTÉTICA · ${planeta.name.toUpperCase()}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="holo-close"
+              data-close-cosmic
+            >✕</button>
+
+          </div>
+
+          <div class="simulation-body">
+
+            <div class="simulation-hero">
+
+              <div
+                class="sim-planet"
+                style="background:${planeta.gradient};"
+              ></div>
+
+              <div>
+
+                <h2>
+                  ¿Cómo sería vivir en ${planeta.name}?
+                </h2>
+
+                <p class="sim-intro">
+                  ${descripcion}
+                </p>
+
+                <div class="sim-scenario">
+
+                  <h3>
+                    🚀 Escenario hipotético
+                  </h3>
+
+                  <p>
+                    ${simulacion}
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="sim-grid">
+
+              <div class="sim-card">
+                <div class="sim-icon">⚖️</div>
+                <span>Gravedad</span>
+                <strong>${planeta.gravity} g</strong>
+              </div>
+
+              <div class="sim-card">
+                <div class="sim-icon">🌡️</div>
+                <span>Temperatura</span>
+                <strong>${planeta.temperature}</strong>
+              </div>
+
+              <div class="sim-card">
+                <div class="sim-icon">🌫️</div>
+                <span>Atmósfera</span>
+                <strong>${planeta.atmosphere}</strong>
+              </div>
+
+              <div class="sim-card">
+                <div class="sim-icon">⚠️</div>
+                <span>Principal desafío</span>
+                <strong>${planeta.danger}</strong>
+              </div>
+
+              <div class="sim-card">
+                <div class="sim-icon">📊</div>
+                <span>Viabilidad estimada</span>
+                <strong>${score}%</strong>
+              </div>
+
+              <div class="sim-card">
+                <div class="sim-icon">🛰️</div>
+                <span>Estado de misión</span>
+                <strong>En análisis</strong>
+              </div>
+
+            </div>
+
+            <div class="sim-actions">
+
+              <button
+                type="button"
+                class="sim-button"
+                data-open-holo-map
+              >
+                🗺️ Volver al mapa
+              </button>
+
+              <button
+                type="button"
+                class="sim-button"
+                data-sim-next
+              >
+                ➡️ Simular otro planeta
+              </button>
+
+              <button
+                type="button"
+                class="sim-button"
+                data-close-cosmic
+              >
+                ✓ Finalizar simulación
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      `);
+
+      conectarBotonesSimulacion();
+    }
+
+    function conectarBotonesSimulacion() {
+
+      const mapaButton =
+        document.querySelector("[data-open-holo-map]");
+
+      if (mapaButton) {
+
+        mapaButton.addEventListener("click", function () {
+          abrirMapaHolografico();
+        });
+
+      }
+
+      const nextButton =
+        document.querySelector("[data-sim-next]");
+
+      if (nextButton) {
+
+        nextButton.addEventListener("click", function () {
+
+          const actual = obtenerIndiceActual();
+
+          const siguiente =
+            (actual + 1) % datosPlanetas.length;
+
+          abrirSimulacion(siguiente);
+
+          try {
+            if (typeof selectPlanet === "function") {
+              selectPlanet(siguiente, true);
+            }
+          } catch (error) {}
+
+        });
+
+      }
+    }
+
+    /* =====================================================
+       ESCENARIOS
+       ===================================================== */
+
+    function crearEscenario(planeta) {
+
+      const escenarios = {
+
+        mercury:
+          `Los astronautas necesitarían permanecer dentro de instalaciones muy protegidas. 
+          La diferencia extrema entre las condiciones del lado iluminado y el lado nocturno
+          obligaría a controlar cuidadosamente la temperatura y la exposición a la radiación.`,
+
+        venus:
+          `Una colonia en la superficie tendría enormes dificultades debido al calor y la presión.
+          Un escenario más realista sería estudiar una estación flotante en capas altas de la atmósfera,
+          donde las condiciones son menos extremas que en la superficie.`,
+
+        earth:
+          `Una colonia humana podría funcionar con infraestructura relativamente convencional.
+          El reto principal sería mantener los recursos, proteger ecosistemas y desarrollar
+          sistemas sostenibles para una población creciente.`,
+
+        mars:
+          `Una colonia necesitaría hábitats presurizados, protección frente a la radiación,
+          sistemas para obtener agua y una producción controlada de alimentos. 
+          Los astronautas pasarían gran parte del tiempo dentro de estructuras protegidas.`,
+
+        jupiter:
+          `Júpiter no tiene una superficie sólida donde establecer una colonia convencional.
+          Una misión humana tendría que utilizar vehículos o estaciones especiales y enfrentaría
+          enormes presiones y condiciones atmosféricas peligrosas.`,
+
+        saturn:
+          `Al igual que Júpiter, Saturno es un gigante gaseoso. Una colonia sobre el planeta
+          no sería viable con tecnología actual; una misión podría centrarse en estaciones
+          espaciales o en algunas de sus lunas.`,
+
+        uranus:
+          `El frío extremo y la composición atmosférica obligarían a utilizar hábitats completamente
+          cerrados. La energía y el aislamiento térmico serían dos de los principales problemas
+          de una misión humana prolongada.`,
+
+        neptune:
+          `Neptuno presenta temperaturas extremadamente bajas y vientos muy rápidos.
+          Una misión humana tendría que operar mediante sistemas completamente artificiales,
+          probablemente desde una nave o estación y no desde una superficie sólida.`
+
+      };
+
+      return escenarios[planeta.id] ||
+        `Una colonia humana necesitaría sistemas de soporte vital, energía, protección ambiental
+        y una infraestructura diseñada específicamente para las condiciones de ${planeta.name}.`;
+    }
+
+    function calcularViabilidad(planeta) {
+
+      if (planeta.id === "earth") return 95;
+      if (planeta.id === "mars") return 42;
+      if (planeta.id === "venus") return 8;
+      if (planeta.id === "mercury") return 12;
+      if (planeta.id === "saturn") return 5;
+      if (planeta.id === "jupiter") return 4;
+      if (planeta.id === "uranus") return 3;
+      if (planeta.id === "neptune") return 2;
+
+      return 10;
+    }
+
+    function obtenerIndiceActual() {
+
+      try {
+
+        if (
+          typeof currentPlanetIndex !== "undefined" &&
+          Number.isInteger(currentPlanetIndex)
+        ) {
+          return currentPlanetIndex;
+        }
+
+      } catch (error) {}
+
+      return 0;
+    }
+
+    /* =====================================================
+       CONECTAR LOS BOTONES QUE YA EXISTEN
+       ===================================================== */
+
+    function conectarBotonesExistentes() {
+
+      const elementos =
+        document.querySelectorAll(
+          "button, a, [role='button']"
+        );
+
+      elementos.forEach(elemento => {
+
+        const texto =
+          elemento.textContent
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, " ");
+
+        /*
+         * Busca el botón por su texto.
+         * Así no importa qué ID tenía en el código anterior.
+         */
+
+        if (
+          texto.includes("abrir mapa holográfico") ||
+          texto.includes("mapa holográfico")
+        ) {
+
+          elemento.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            abrirMapaHolografico();
+
+          });
+
+        }
+
+        if (
+          texto.includes("simulación humana") ||
+          texto.includes("simulacion humana")
+        ) {
+
+          elemento.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            abrirSimulacion(
+              obtenerIndiceActual()
+            );
+
+          });
+
+        }
+
+      });
+    }
+
+    /*
+     * También usamos delegación para botones que el código
+     * anterior pueda crear dinámicamente.
+     */
+
+    document.addEventListener("click", function (event) {
+
+      const mapa =
+        event.target.closest("[data-open-holographic-map]");
+
+      if (mapa) {
+        event.preventDefault();
+        abrirMapaHolografico();
+      }
+
+      const simulacion =
+        event.target.closest("[data-open-human-simulation]");
+
+      if (simulacion) {
+        event.preventDefault();
+        abrirSimulacion(obtenerIndiceActual());
+      }
+
+    });
+
+    conectarBotonesExistentes();
+
+    /* -----------------------------------------------------
+       Exponer funciones para que el código anterior pueda
+       llamarlas si lo necesita.
+       ----------------------------------------------------- */
+
+    window.abrirMapaHolografico = abrirMapaHolografico;
+    window.abrirSimulacionHumana = function () {
+      abrirSimulacion(obtenerIndiceActual());
+    };
+
+  }
+
+})();
